@@ -1,57 +1,127 @@
-# 🚀 Dev เก๊า - Portfolio Website
+# Dev Kao Portfolio
 
-> Professional Full Stack Developer Portfolio & Services
+Professional Full Stack Developer Portfolio built with React, TypeScript, and Tailwind CSS.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://devnid.xyz/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## 🚀 Live Demo
 
-## 🌟 Features
-
-- ⚡ **Modern Tech Stack**: React 18, TypeScript, Vite, Tailwind CSS
-- 🎨 **Beautiful UI/UX**: Dark theme with gradient animations
-- 📱 **Fully Responsive**: Optimized for all devices
-- 🚀 **High Performance**: Optimized for speed and SEO
-- 💬 **Contact Integration**: Telegram Bot API integration
-- 📊 **Analytics**: Built-in visitor tracking
-- 🎭 **Interactive Elements**: Framer Motion animations
+- **Production**: [https://dev-kao-portfolio.web.app](https://dev-kao-portfolio.web.app)
+- **Firebase Console**: [https://console.firebase.google.com/project/dev-kao-portfolio](https://console.firebase.google.com/project/dev-kao-portfolio)
 
 ## 🛠️ Tech Stack
 
-- **React 18** - UI Library
-- **TypeScript** - Type Safety
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **Vite** - Build Tool
-- **Telegram Bot API** - Contact form
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **Hosting**: Firebase Hosting
+- **CI/CD**: GitHub Actions
 
-## 🚀 Quick Start
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/dev-kao-portfolio.git
+
+# Navigate to project directory
+cd dev-kao-portfolio
+
 # Install dependencies
 npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
-## 📝 Scripts
+## 🚀 Deployment
+
+### Manual Deployment
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
+# Build and deploy to Firebase
+npm run deploy
+
+# Deploy only hosting
+npm run deploy:hosting
 ```
 
-## 🤝 Contact
+### Using Deploy Script
 
-- **Website**: [devnid.xyz](https://devnid.xyz/)
+```bash
+# Make script executable (Linux/Mac)
+chmod +x deploy.sh
+
+# Run deployment script
+./deploy.sh
+```
+
+### Auto Deployment
+
+The project uses GitHub Actions for automatic deployment:
+
+- Push to `main` branch triggers deployment
+- Pull requests create preview deployments
+
+## 🔧 Environment Setup
+
+1. Install Firebase CLI:
+
+```bash
+npm install -g firebase-tools
+```
+
+2. Login to Firebase:
+
+```bash
+firebase login
+```
+
+3. Initialize project (if not already done):
+
+```bash
+firebase init
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # React components
+├── hooks/              # Custom React hooks
+├── utils/              # Utility functions
+├── types/              # TypeScript type definitions
+└── assets/             # Static assets
+
+public/                 # Public assets
+dist/                   # Build output (generated)
+```
+
+## 🌟 Features
+
+- ⚡ Lightning fast with Vite
+- 📱 Fully responsive design
+- 🎨 Modern UI with Tailwind CSS
+- 🚀 Smooth animations with Framer Motion
+- 📈 SEO optimized
+- 🔍 Analytics integration
+- 🌍 Multi-language support ready
+- 🔒 Type-safe with TypeScript
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
 - **Email**: shayetet14@protonmail.com
-- **LINE**: [@kao_no_limit](https://line.me/ti/p/~kao_no_limit)
+- **LINE**: kao_no_limit
 - **Facebook**: [Comfixit](https://www.facebook.com/Comfixit)
-
----
-
-⭐ **Star this repository if you found it helpful!**
+- **Telegram**: [@up2uok](https://t.me/up2uok)
+"# Portfolio" 
