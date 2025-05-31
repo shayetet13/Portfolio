@@ -1,10 +1,20 @@
 [build]
-  publish = "dist"
   command = "npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
-  NPM_VERSION = "9"
+  NPM_VERSION = "8"
+
+# Build settings for different contexts
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build:dev"
+
+[context.branch-deploy]
+  command = "npm run build:dev"
 
 # Headers for security and performance
 [[headers]]
@@ -13,10 +23,9 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    
-    
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
 # Cache static assets
 [[headers]]
   for = "/static/*"
@@ -33,12 +42,113 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Image optimization
 [[headers]]
   for = "/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# SEO redirects - ลบ duplicates
+# Primary domain headers
+[[headers]]
+  for = "https://devnid.xyz/*"
+  [headers.values]
+    Link = '''</robots.txt>; rel=alternate; type=text/plain, <https://devnid.netlify.app/>; rel=alternate'''
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Alternate domain headers
+[[headers]]
+  for = "https://devnid.netlify.app/*"
+  [headers.values]
+    Link = '''</robots.txt>; rel=alternate; type=text/plain, <https://devnid.xyz/>; rel=canonical'''
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Asset headers with CORS
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET"
+
+# Image format headers
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+
+# Redirects for SEO and user experience
+[[redirects]]
+  from = "/portfolio"
+  to = "/"
+
+[[redirects]]
+  from = "/services"
+  to = "/#expertise"
+
+[[redirects]]
+  from = "/projects"
+  to = "/#featured-projects"
+
+[[redirects]]
+  from = "/about-us"
+  to = "/#about"
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/#contact"
+
+[[redirects]]
+  from = "/web-development"
+  to = "/"
+
+[[redirects]]
+  from = "/full-stack-developer"
+  to = "/"
+
+[[redirects]]
+  from = "/react-developer"
+  to = "/"
+
+[[redirects]]
+  from = "/nodejs-developer"
+  to = "/"
+
+[[redirects]]
+  from = "/old-portfolio"
+  to = "/"
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+
+# 301 redirects for SEO
 [[redirects]]
   from = "/portfolio"
   to = "/"
@@ -94,44 +204,13 @@
   to = "/"
   status = 301
 
-# SPA fallback - ต้องอยู่ท้ายสุด
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Environment-specific configurations
-[context.production]
-  command = "npm run build"
-  
-[context.deploy-preview]
-  command = "npm run build"
-  
-[context.branch-deploy]
-  command = "npm run build"
-
-# Headers สำหรับ custom domains
-[[headers]]
-  for = "https://devnid.xyz/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Link = "</robots.txt>; rel=alternate; type=text/plain, <https://devnid.netlify.app/>; rel=alternate"
-
-[[headers]]
-  for = "https://devnid.netlify.app/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Link = "</robots.txt>; rel=alternate; type=text/plain, <https://devnid.xyz/>; rel=canonical"
-
-# Cross-domain redirects and aliases
+# Cross-domain redirects for SEO
 [[redirects]]
   from = "https://devnid.netlify.app/sitemap.xml"
   to = "https://devnid.xyz/sitemap.xml"
@@ -139,37 +218,9 @@
 
 [[redirects]]
   from = "https://devnid.netlify.app/robots.txt"
-  to = "https://devnid.xyz/robots.txt"  
+  to = "https://devnid.xyz/robots.txt"
   status = 301
 
-# แก้ไข CORS สำหรับรูปภาพ
-[[headers]]
-  for = "/img/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET"
-
-[[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Access-Control-Allow-Origin = "*"
-
-[[headers]]
-  for = "/*.jpeg"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Access-Control-Allow-Origin = "*"
-
-[[headers]]
-  for = "/*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Access-Control-Allow-Origin = "*"
-
-[[headers]]
-  for = "/*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Access-Control-Allow-Origin = "*"
+# Edge Functions
+[build]
+  edge_functions = "netlify/edge-functions"
