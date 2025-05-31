@@ -2,7 +2,7 @@
 
 > Professional Full Stack Developer Portfolio & Services
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://your-site.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://devnid.xyz/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 🌟 Features
@@ -47,7 +47,7 @@ npm run preview      # Preview production build
 
 ## 🤝 Contact
 
-- **Website**: [your-site.netlify.app](https://your-site.netlify.app)
+- **Website**: [devnid.xyz](https://devnid.xyz/)
 - **Email**: shayetet14@protonmail.com
 - **LINE**: [@kao_no_limit](https://line.me/ti/p/~kao_no_limit)
 - **Facebook**: [Comfixit](https://www.facebook.com/Comfixit)
