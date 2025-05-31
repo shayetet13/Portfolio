@@ -564,10 +564,56 @@ const Contact = () => {
                 <div className="flex justify-center">
                   <img
                     src="/img/mern.jpeg"
-                    alt="MERN Stack"
+                    alt="MERN Stack - MongoDB, Express, React, Node.js"
                     className="rounded-lg max-h-36 object-contain shadow-lg border border-slate-700/50"
-                    loading="lazy"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                      if (target.nextElementSibling) {
+                        (
+                          target.nextElementSibling as HTMLElement
+                        ).style.display = "flex";
+                      }
+                    }}
                   />
+
+                  {/* Fallback MERN Stack UI */}
+                  <div
+                    className="hidden flex-col items-center justify-center p-6 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-lg border border-slate-700/50"
+                    style={{
+                      minHeight: "144px",
+                      width: "100%",
+                      maxWidth: "288px",
+                    }}
+                  >
+                    <div className="grid grid-cols-2 gap-3 text-center mb-3">
+                      <div className="p-2 bg-green-600/20 rounded-lg border border-green-500/30 hover:bg-green-600/30 transition-colors">
+                        <div className="text-xl font-bold text-green-400">
+                          M
+                        </div>
+                        <div className="text-xs text-slate-300">MongoDB</div>
+                      </div>
+                      <div className="p-2 bg-gray-600/20 rounded-lg border border-gray-500/30 hover:bg-gray-600/30 transition-colors">
+                        <div className="text-xl font-bold text-gray-400">E</div>
+                        <div className="text-xs text-slate-300">Express</div>
+                      </div>
+                      <div className="p-2 bg-cyan-600/20 rounded-lg border border-cyan-500/30 hover:bg-cyan-600/30 transition-colors">
+                        <div className="text-xl font-bold text-cyan-400">R</div>
+                        <div className="text-xs text-slate-300">React</div>
+                      </div>
+                      <div className="p-2 bg-green-600/20 rounded-lg border border-green-500/30 hover:bg-green-600/30 transition-colors">
+                        <div className="text-xl font-bold text-green-400">
+                          N
+                        </div>
+                        <div className="text-xs text-slate-300">Node.js</div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-sm text-slate-400">
+                        Full Stack Development
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

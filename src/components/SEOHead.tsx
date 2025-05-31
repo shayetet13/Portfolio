@@ -29,7 +29,9 @@ const SEOHead = ({ title, description, keywords, image, url }: SEOProps) => {
 
   // ฟังก์ชันสำหรับอัพเดท canonical URL
   const updateCanonicalUrl = (url: string) => {
-    let link = document.querySelector('link[rel="canonical"]');
+    let link = document.querySelector(
+      'link[rel="canonical"]'
+    ) as HTMLLinkElement;
 
     if (link) {
       link.setAttribute("href", url);
@@ -57,6 +59,11 @@ const SEOHead = ({ title, description, keywords, image, url }: SEOProps) => {
     updateMetaTag("og:site_name", "Dev เก๊า Portfolio", "property");
     updateMetaTag("og:type", "website", "property");
     updateMetaTag("og:locale", "th_TH", "property");
+    updateMetaTag(
+      "og:alternate_url",
+      "https://devnid.netlify.app/",
+      "property"
+    );
 
     // Twitter Card
     updateMetaTag("twitter:card", "summary_large_image", "name");
@@ -106,16 +113,19 @@ const SEOHead = ({ title, description, keywords, image, url }: SEOProps) => {
       },
     };
 
-    // Add or update JSON-LD script
-    let scriptTag = document.getElementById("json-ld-schema");
+    // Add or update JSON-LD script - แก้ไข TypeScript error โดยใช้ type assertion
+    let scriptTag = document.querySelector(
+      "#json-ld-schema"
+    ) as HTMLScriptElement | null;
+
     if (scriptTag) {
       scriptTag.textContent = JSON.stringify(schema);
     } else {
-      scriptTag = document.createElement("script");
-      scriptTag.type = "application/ld+json";
-      scriptTag.id = "json-ld-schema";
-      scriptTag.textContent = JSON.stringify(schema);
-      document.head.appendChild(scriptTag);
+      const newScript = document.createElement("script");
+      newScript.type = "application/ld+json";
+      newScript.id = "json-ld-schema";
+      newScript.textContent = JSON.stringify(schema);
+      document.head.appendChild(newScript);
     }
 
     // Cleanup function

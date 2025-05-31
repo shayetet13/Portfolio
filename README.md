@@ -4,7 +4,7 @@ Professional Full Stack Developer Portfolio built with React, TypeScript, and Ta
 
 ## 🚀 Live Demo
 
-- **Production**: [https://dev-kao-portfolio.web.app](https://dev-kao-portfolio.web.app)
+- **Production**: [https://devnid.xyz/](https://devnid.xyz/)
 - **Firebase Console**: [https://console.firebase.google.com/project/dev-kao-portfolio](https://console.firebase.google.com/project/dev-kao-portfolio)
 
 ## 🛠️ Tech Stack
@@ -20,7 +20,7 @@ Professional Full Stack Developer Portfolio built with React, TypeScript, and Ta
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/dev-kao-portfolio.git
+git clone https://github.com/shayetet13/Portfolio
 
 # Navigate to project directory
 cd dev-kao-portfolio

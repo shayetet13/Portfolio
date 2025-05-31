@@ -9,14 +9,9 @@ export const initializeSEOTools = () => {
   // Bing Webmaster verification
   const bingMeta = document.createElement("meta");
   bingMeta.name = "msvalidate.01";
-  bingMeta.content = "YOUR_BING_VERIFICATION_CODE";
+  bingMeta.content = "17CF7F384968B14D1F5D2A70D6ED9408";
   document.head.appendChild(bingMeta);
 
-  // Yandex verification
-  const yandexMeta = document.createElement("meta");
-  yandexMeta.name = "yandex-verification";
-  yandexMeta.content = "YOUR_YANDEX_VERIFICATION_CODE";
-  document.head.appendChild(yandexMeta);
 };
 
 // Rich Snippets สำหรับการแสดงผลใน Search Results
@@ -29,19 +24,19 @@ export const generateRichSnippets = () => {
         "@type": "ListItem",
         position: 1,
         name: "หน้าแรก",
-        item: "https://portfolio-6881e.firebaseapp.com/",
+        item: "https://devnid.xyz/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "บริการ",
-        item: "https://portfolio-6881e.firebaseapp.com/#expertise",
+        item: "https://devnid.xyz/#expertise",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "ผลงาน",
-        item: "https://portfolio-6881e.firebaseapp.com/#featured-projects",
+        item: "https://devnid.xyz/#featured-projects",
       },
     ],
   };

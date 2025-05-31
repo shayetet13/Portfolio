@@ -36,7 +36,7 @@ firebase deploy --only hosting
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}🎉 Deployment successful!${NC}"
-    echo -e "${GREEN}🌐 Your site is live at: https://dev-kao-portfolio.web.app${NC}"
+    echo -e "${GREEN}🌐 Your site is live at: https://devnid.netlify.app${NC}"
 else
     echo -e "${RED}❌ Deployment failed!${NC}"
     exit 1
