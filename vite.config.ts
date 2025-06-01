@@ -8,6 +8,31 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     plugins: [react()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+    build: {
+      target: "esnext",
+      minify: "terser",
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["react", "react-dom"],
+            animation: ["framer-motion"],
+            icons: ["lucide-react"],
+          },
+        },
+      },
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+    },
     server: {
       port: 5173,
       host: true,
@@ -16,46 +41,8 @@ export default defineConfig(({ command, mode }) => {
       port: 4173,
       host: true,
     },
-    build: {
-      outDir: "dist",
-      sourcemap: mode === "development",
-      minify: mode === "production" ? "terser" : false,
-      target: "es2020",
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ["react", "react-dom"],
-            animations: ["framer-motion"],
-            icons: ["lucide-react"],
-          },
-          assetFileNames: "assets/[name]-[hash][extname]",
-          chunkFileNames: "assets/[name]-[hash].js",
-          entryFileNames: "assets/[name]-[hash].js",
-        },
-      },
-      assetsDir: "assets",
-      // Optimize build for production
-      ...(mode === "production" && {
-        terserOptions: {
-          compress: {
-            drop_console: true,
-            drop_debugger: true,
-          },
-        },
-      }),
-    },
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
-    },
-    base: "/",
-    // Define environment variables for the client
     define: {
-      __DEV__: mode === "development",
-      __PROD__: mode === "production",
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
     },
-    // Environment variables to expose to client
-    envPrefix: ["VITE_", "TELEGRAM_", "GOOGLE_"],
   };
 });

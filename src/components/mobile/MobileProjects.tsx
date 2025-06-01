@@ -1,71 +1,51 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import {
-  Star,
-  Code2,
-  Smartphone,
-  Globe,
-  Wrench,
-  ArrowRight,
-  Zap,
-} from "lucide-react";
+import { Code2, Smartphone, Globe, Wrench, ArrowRight } from "lucide-react";
 import ProjectModal from "../ProjectModal";
 
 const MobileProjects = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<{
     title: string;
-    icon: any;
+    icon: typeof Code2;
   } | null>(null);
 
   const services = [
     {
       id: 1,
-      title: "Web Dev",
-      subtitle: "เว็บไซต์ & แอป",
-      description: "พัฒนาเว็บไซต์และแอปพลิเคชัน",
-      services: ["Website", "Web App", "E-commerce", "Dashboard"],
-      tech: ["React", "Node.js", "MongoDB"],
+      title: "Web Development",
+      subtitle: "เว็บไซต์ & ระบบจัดการ",
+      description: "พัฒนา Web Site Web App ระดับมืออาชีพ",
+      price: "3,000",
       gradient: "from-blue-600 to-cyan-500",
       icon: Globe,
-      price: "3K",
-      featured: true,
     },
     {
       id: 2,
-      title: "Mobile App",
-      subtitle: "แอปมือถือ",
-      description: "พัฒนาแอปมือถือ iOS และ Android",
-      services: ["iOS App", "Android", "PWA", "Hybrid"],
-      tech: ["React Native", "Flutter"],
+      title: "Custom Software",
+      subtitle: "โปรแกรมตามสั่ง",
+      description: "พัฒนาซอฟต์แวร์เฉพาะทาง ระบบจัดการองค์กร",
+      price: "15,000",
       gradient: "from-purple-600 to-pink-500",
-      icon: Smartphone,
-      price: "15K",
-      featured: false,
+      icon: Code2,
     },
     {
       id: 3,
-      title: "Software",
-      subtitle: "โปรแกรมตามสั่ง",
-      description: "พัฒนาซอฟต์แวร์เฉพาะทาง",
-      services: ["POS", "CRM", "ERP", "Custom"],
-      tech: ["Python", "Laravel"],
+      title: "Mobile Service",
+      subtitle: "ROM & Root Service",
+      description: "ลง Custom ROM, Root Android, Unlock Bootloader",
+      price: "1,000",
       gradient: "from-green-600 to-emerald-500",
-      icon: Code2,
-      price: "20K",
-      featured: false,
+      icon: Smartphone,
     },
     {
       id: 4,
       title: "IT Support",
       subtitle: "ซ่อม & ติดตั้ง",
-      description: "บริการซ่อมและติดตั้งระบบ",
-      services: ["Repair", "Setup", "Recovery", "Support"],
-      tech: ["Windows", "Network"],
+      description: "ซ่อมคอม ติดตั้งระบบ แก้ไขปัญหา IT Support",
+      price: "500",
       gradient: "from-orange-600 to-red-500",
       icon: Wrench,
-      price: "500",
-      featured: false,
     },
   ];
 
@@ -78,156 +58,103 @@ const MobileProjects = () => {
   };
 
   return (
-    <section
-      id="featured-projects"
-      className="py-12 border-t border-slate-800 relative overflow-hidden pb-20"
-    >
-      {/* Mobile Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:16px_16px]"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-purple-500/3 to-cyan-500/3"></div>
+    <section className="py-16 px-4 border-t border-slate-800 relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Mobile Header */}
+      <div className="max-w-md mx-auto relative z-10">
+        {/* Header */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-900/70 border border-slate-700/50 backdrop-blur-sm rounded-full text-xs text-slate-300 mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Zap size={12} className="text-blue-400" />
-            Services
-          </motion.div>
-
-          <h2 className="text-2xl font-bold mb-4">
-            <span className="text-white">บริการ</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
-              ของเรา
+          <h2 className="text-3xl font-bold mb-4">
+            <span className="text-white">Services </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Portfolio
             </span>
           </h2>
-
-          <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto break-words">
-            ครบครันทุกบริการด้านเทคโนโลยี
-          </p>
+          <p className="text-slate-400">ครบครันทุกบริการ IT & Development</p>
         </motion.div>
 
-        {/* Mobile Services Grid */}
-        <div className="space-y-4 mb-20">
+        {/* Services Grid */}
+        <div className="space-y-6">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="group relative"
+              className="bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative bg-slate-950/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 transition-all duration-300 group-hover:border-slate-600/70">
-                {service.featured && (
-                  <div className="absolute -top-2 -right-2">
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                      <Star size={10} className="fill-current" />
-                      HOT
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex items-start gap-3 mb-3">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
                   <div
-                    className={`w-10 h-10 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0`}
+                    className={`w-12 h-12 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center`}
                   >
-                    <service.icon size={20} className="text-white" />
+                    <service.icon size={24} className="text-white" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base font-bold text-white truncate">
+                  <div>
+                    <h3 className="text-lg font-bold text-white">
                       {service.title}
                     </h3>
-                    <p className="text-xs text-slate-400 truncate">
-                      {service.subtitle}
-                    </p>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div
-                      className={`text-lg font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent whitespace-nowrap`}
-                    >
-                      ฿{service.price}
-                    </div>
-                    <div className="text-xs text-slate-500">เริ่มต้น</div>
+                    <p className="text-sm text-slate-400">{service.subtitle}</p>
                   </div>
                 </div>
-
-                <p className="text-slate-300 text-xs leading-relaxed mb-3 break-words">
-                  {service.description}
-                </p>
-
-                <div className="grid grid-cols-2 gap-1 mb-3">
-                  {service.services.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-1.5 text-xs text-slate-300 min-w-0"
-                    >
-                      <div
-                        className={`w-1 h-1 bg-gradient-to-r ${service.gradient} rounded-full flex-shrink-0`}
-                      ></div>
-                      <span className="truncate">{item}</span>
-                    </div>
-                  ))}
+                <div className="text-right">
+                  <div
+                    className={`text-xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}
+                  >
+                    ฿{service.price}
+                  </div>
+                  <div className="text-xs text-slate-500">เริ่มต้น</div>
                 </div>
-
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {service.tech.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 bg-slate-700/50 border border-slate-600/30 rounded text-xs text-slate-300 truncate"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <motion.button
-                  onClick={() => handleGetStarted(service)}
-                  className={`w-full bg-gradient-to-r ${service.gradient} text-white py-2.5 px-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span>เริ่มต้น</span>
-                  <ArrowRight size={14} />
-                </motion.button>
               </div>
+
+              {/* Description */}
+              <p className="text-slate-300 text-sm mb-6">
+                {service.description}
+              </p>
+
+              {/* CTA Button */}
+              <button
+                onClick={() => handleGetStarted(service)}
+                className={`w-full bg-gradient-to-r ${service.gradient} text-white py-3 rounded-xl font-medium flex items-center justify-center gap-2`}
+              >
+                เริ่มต้นเลย
+                <ArrowRight size={16} />
+              </button>
             </motion.div>
           ))}
         </div>
 
-        {/* Mobile Bottom CTA */}
+        {/* Bottom CTA */}
         <motion.div
-          className="text-center mt-8 mb-20"
+          className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.button
-            onClick={() => {
+          <button
+            onClick={() =>
               document.getElementById("contact")?.scrollIntoView({
                 behavior: "smooth",
-              });
-            }}
-            className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white py-3 px-6 rounded-xl font-semibold transition-all shadow-lg text-sm"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+              })
+            }
+            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium"
           >
             ติดต่อเราเลย
-          </motion.button>
+          </button>
         </motion.div>
       </div>
 
+      {/* Project Modal */}
       <ProjectModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

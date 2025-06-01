@@ -59,12 +59,40 @@
     }
   }
 
+  /* Orbit Animation - เพิ่ม CSS สำหรับ orbit animation */
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Counter Orbit Animation - เพิ่ม animation ที่หมุนทวนเข็มนาฬิกา */
+  @keyframes counter-orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
 
   .animate-glow {
     animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-orbit {
+    animation: orbit 30s linear infinite;
+  }
+
+  .animate-counter-orbit {
+    animation: counter-orbit 30s linear infinite;
   }
 
   /* Terminal styles */
@@ -127,6 +155,41 @@
 
   .loading-spinner {
     @apply animate-spin w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full;
+  }
+
+  /* เพิ่ม gradient border utilities สำหรับ Tailwind */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+  }
+
+  /* Custom scrollbar สำหรับ webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #2563eb, #7c3aed);
   }
 }
 

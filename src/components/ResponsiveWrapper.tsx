@@ -1,36 +1,28 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 import { useDeviceDetection } from "../hooks/useDeviceDetection";
 
 interface ResponsiveWrapperProps {
-  children?: ReactNode;
-  mobileComponent?: ReactNode;
-  tabletComponent?: ReactNode;
-  desktopComponent?: ReactNode;
+  desktopComponent: ReactElement;
+  mobileComponent: ReactElement;
+  tabletComponent?: ReactElement;
 }
 
 const ResponsiveWrapper = ({
-  children,
+  desktopComponent,
   mobileComponent,
   tabletComponent,
-  desktopComponent,
 }: ResponsiveWrapperProps) => {
   const device = useDeviceDetection();
 
-  // แสดง component เฉพาะสำหรับแต่ละอุปกรณ์
-  if (device.isMobile && mobileComponent) {
-    return <>{mobileComponent}</>;
+  if (device.isMobile) {
+    return mobileComponent;
   }
 
   if (device.isTablet && tabletComponent) {
-    return <>{tabletComponent}</>;
+    return tabletComponent;
   }
 
-  if (device.isDesktop && desktopComponent) {
-    return <>{desktopComponent}</>;
-  }
-
-  // แสดง children เป็น default
-  return <>{children}</>;
+  return desktopComponent;
 };
 
 export default ResponsiveWrapper;

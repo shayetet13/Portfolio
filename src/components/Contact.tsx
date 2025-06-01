@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Send, Check, AlertTriangle } from "lucide-react";
-
-const TELEGRAM_BOT_TOKEN = "7499202173:AAH0u99APw0cqEswfLNfuRu447w-QDpLj9c"; // เปลี่ยนเป็น Token ของบอทที่คุณสร้าง
-const TELEGRAM_CHAT_ID = "471795698"; // เปลี่ยนเป็น Chat ID ของคุณ
+import {
+  config,
+  getTelegramBotUrl,
+  getTelegramConfig,
+} from "../config/environment";
 
 interface VisitorStats {
   totalVisitors: number;
   onlineUsers: number;
   todayVisitors: number;
   pageViews: number;
-  avgTimeSpent: string; // เพิ่มเวลาเฉลี่ยที่ผู้ใช้อยู่ในเว็บไซต์
+  avgTimeSpent: string;
   isLoading: boolean;
 }
 
@@ -274,31 +276,40 @@ const Contact = () => {
 📱 Line ID: ${formData.lineId}
 🏗️ ประเภทงาน: ${formData.projectType}
 📝 รายละเอียด: ${formData.details}
+🌐 มาจากเว็บไซต์: ${config.siteUrl}
+⏰ เวลา: ${new Date().toLocaleString("th-TH")}
       `;
 
-      // ส่งข้อความไปยัง Telegram Bot API
+      // ใช้ Contact Bot สำหรับ Contact Form
+      const contactBotConfig = getTelegramConfig("contact");
+
+      // ส่งข้อความไปยัง Telegram Bot API - ใช้ Contact Bot
       const response = await fetch(
-        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        `${getTelegramBotUrl("contact")}/sendMessage`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
+            chat_id: contactBotConfig.chatId,
             text: message,
             parse_mode: "HTML",
+            disable_web_page_preview: true,
           }),
         }
       );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
 
       if (data.ok) {
         setSubmitStatus({
           type: "success",
-          message:
-            "ส่งข้อความสำเร็จ! ผ่าน Telegran เราจะติดต่อกลับโดยเร็วที่สุด",
+          message: "ส่งข้อความสำเร็จแล้ว! เราจะติดต่อกลับโดยเร็วที่สุด 🚀",
         });
         // รีเซ็ตฟอร์ม
         setFormData({
@@ -308,14 +319,14 @@ const Contact = () => {
           details: "",
         });
       } else {
-        throw new Error("Failed to send message to Telegram");
+        throw new Error(data.description || "Failed to send message");
       }
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error("Error sending message via Contact Bot:", error);
       setSubmitStatus({
         type: "error",
         message:
-          "เกิดข้อผิดพลาดในการส่งข้อความ โปรดลองอีกครั้งหรือติดต่อผ่านช่องทางอื่น",
+          "เกิดข้อผิดพลาดในการส่งข้อความ โปรดลองอีกครั้งหรือติดต่อผ่านช่องทางอื่น 📞",
       });
     } finally {
       setIsSubmitting(false);
@@ -877,7 +888,7 @@ const Contact = () => {
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
                   {/* LINE */}
                   <a
-                    href="https://line.me/ti/p/~kao_no_limit"
+                    href={`https://line.me/ti/p/~${config.social.lineId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
@@ -903,7 +914,7 @@ const Contact = () => {
 
                   {/* Facebook */}
                   <a
-                    href="https://www.facebook.com/Comfixit"
+                    href={config.social.facebookUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
@@ -929,7 +940,7 @@ const Contact = () => {
 
                   {/* Telegram */}
                   <a
-                    href="https://t.me/up2uok"
+                    href={config.social.telegramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
@@ -955,7 +966,7 @@ const Contact = () => {
 
                   {/* X/Twitter */}
                   <a
-                    href="https://x.com/@Shayetet14"
+                    href={config.social.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
@@ -981,7 +992,7 @@ const Contact = () => {
 
                   {/* TikTok */}
                   <a
-                    href="https://www.tiktok.com/@it_step1"
+                    href={config.social.tiktokUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
@@ -1007,7 +1018,7 @@ const Contact = () => {
 
                   {/* Email */}
                   <a
-                    href="mailto:shayetet14@protonmail.com"
+                    href={`mailto:${config.social.email}`}
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="Email"
                   >
