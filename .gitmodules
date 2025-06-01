@@ -1,8 +1,0 @@
-[submodule "Portfolio"]
-    path = Portfolio
-    url = https://github.com/shayetet13/Portfolio.git
-
-# ถ้าต้องการ submodule ใหม่ ให้ใช้ URL และ path ที่ถูกต้อง
-# [submodule "new-submodule-name"]
-#     path = path/to/submodule
-#     url = https://github.com/username/correct-repo.git

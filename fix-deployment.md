@@ -131,3 +131,37 @@ git add .
 git commit -m "Remove problematic submodule and fix deployment"
 git push origin main
 ```
+
+## 🆕 แก้ไขปัญหา TypeScript Compiler:
+
+### ปัญหาที่เกิดขึ้น:
+
+- `tsc: not found` - TypeScript compiler ไม่ถูกติดตั้งใน Netlify build environment
+
+### วิธีแก้ไข:
+
+1. **ลบ `tsc &&` ออกจาก build script** ใน package.json
+2. **ใช้ Vite build เท่านั้น** เพราะ Vite จัดการ TypeScript ได้เอง
+3. **เพิ่ม `npm ci`** ใน netlify.toml เพื่อให้ dependencies ติดตั้งครบ
+4. **เพิ่มไฟล์ .nvmrc** เพื่อกำหนด Node.js version
+
+### คำสั่งที่ต้องรัน:
+
+```cmd
+git add .
+git commit -m "Fix TypeScript build and Netlify deployment"
+git push origin main
+```
+
+### ตรวจสอบ:
+
+- ไปที่ Netlify Dashboard
+- ดู build logs ว่าผ่านหรือไม่
+- ตรวจสอบว่าเว็บไซต์ทำงานปกติ
+
+## ✅ การแก้ไขที่ทำ:
+
+1. **package.json**: ลบ `tsc &&` ออกจาก build script
+2. **netlify.toml**: เปลี่ยน command เป็น `npm ci && npm run build`
+3. **vite.config.ts**: ปรับปรุง build configuration
+4. **.nvmrc**: เพิ่มไฟล์ระบุ Node.js version

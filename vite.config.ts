@@ -44,5 +44,9 @@ export default defineConfig(({ command, mode }) => {
     define: {
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
     },
+    esbuild: {
+      target: "esnext",
+      format: "esm",
+    },
   };
 });
