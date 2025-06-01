@@ -12,6 +12,10 @@ import { useSEO } from "./hooks/useSEO";
 import { trackEvent } from "./utils/analytics";
 import "./index.css";
 import ChatButton from "./components/ChatButton";
+import ResponsiveWrapper from "./components/ResponsiveWrapper";
+import MobileHero from "./components/mobile/MobileHero";
+import MobileProjects from "./components/mobile/MobileProjects";
+import { useDeviceDetection } from "./hooks/useDeviceDetection";
 
 function App() {
   // SEO Configuration
@@ -26,12 +30,21 @@ function App() {
     alternateUrl: "https://devnid.netlify.app/",
   };
 
+  // Device Detection
+  const device = useDeviceDetection();
+
   // Use SEO hook
   useSEO(seoConfig);
 
-  // Track app initialization
+  // Track app initialization and device type
   useEffect(() => {
     trackEvent("app_initialized", "engagement");
+    trackEvent("device_type", "analytics", device.deviceType);
+    trackEvent(
+      "screen_size",
+      "analytics",
+      `${device.screenWidth}x${device.screenHeight}`
+    );
 
     // Track performance metrics
     if ("performance" in window) {
@@ -50,27 +63,37 @@ function App() {
         }, 0);
       });
     }
-  }, []);
+  }, [device.deviceType, device.screenWidth, device.screenHeight]);
 
   return (
     <div className="dark min-h-screen bg-slate-950 text-slate-100 relative overflow-x-hidden">
       <SEOHead {...seoConfig} />
 
-      {/* Background Pattern */}
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      {/* Background Pattern - ปรับตามอุปกรณ์ */}
+      <div
+        className={`fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] ${
+          device.isMobile ? "bg-[size:16px_16px]" : "bg-[size:24px_24px]"
+        }`}
+      ></div>
       <div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-cyan-500/5"></div>
 
       <div className="relative z-10">
         <Header />
         <main>
           <section id="home">
-            <Hero />
+            <ResponsiveWrapper
+              desktopComponent={<Hero />}
+              mobileComponent={<MobileHero />}
+            />
           </section>
           <section id="expertise">
             <Skills />
           </section>
           <section id="featured-projects">
-            <Projects />
+            <ResponsiveWrapper
+              desktopComponent={<Projects />}
+              mobileComponent={<MobileProjects />}
+            />
           </section>
           <section id="about">
             <About />
@@ -83,8 +106,7 @@ function App() {
           </section>
         </main>
         <Footer />
-        <ChatButton />{" "}
-        {/* เพิ่ม ChatButton component ที่นี่ - จะอยู่ด้านนอกโครงสร้าง DOM ปกติ */}
+        <ChatButton />
       </div>
     </div>
   );

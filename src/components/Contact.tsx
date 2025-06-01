@@ -617,20 +617,20 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* ขั้นตอนการทำงานของเรา */}
-              <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                <h4 className="text-white font-medium mb-4 flex items-center gap-2">
+              {/* ขั้นตอนการทำงานของเรา - ซ่อนในมือถือเพื่อประหยัดพื้นที่ */}
+              <div className="hidden md:block mt-4 md:mt-6 p-3 md:p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                <h4 className="text-white font-medium mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-blue-400"
+                    className="text-blue-400 md:w-4 md:h-4"
                   >
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                   </svg>
@@ -639,7 +639,7 @@ const Contact = () => {
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-xs text-blue-400 font-bold">
+                    <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-xs text-blue-400 font-bold">
                       1
                     </div>
                     <div>
@@ -653,7 +653,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-xs text-green-400 font-bold">
+                    <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-xs text-green-400 font-bold">
                       2
                     </div>
                     <div>
@@ -667,7 +667,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-xs text-amber-400 font-bold">
+                    <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-xs text-amber-400 font-bold">
                       3
                     </div>
                     <div>
@@ -681,7 +681,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xs text-purple-400 font-bold">
+                    <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xs text-purple-400 font-bold">
                       4
                     </div>
                     <div>
@@ -696,7 +696,7 @@ const Contact = () => {
                 </div>
 
                 <div className="mt-4 flex items-center">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
                   <p className="text-xs text-green-400">
                     เริ่มงานได้ทันทีหลังการติดต่อ
                   </p>
@@ -707,18 +707,21 @@ const Contact = () => {
 
           {/* คอลัมน์ขวา - ฟอร์มติดต่อ */}
           <motion.div
-            className="md:col-span-3"
+            className="lg:col-span-3 order-1 lg:order-2"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-xl p-6 h-full flex flex-col">
-              <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-xl p-4 md:p-6 h-full flex flex-col">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">
                 ส่งข้อความหาเรา
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6 flex-grow">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 md:space-y-6 flex-grow"
+              >
                 <div>
                   <label
                     htmlFor="name"
@@ -734,7 +737,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="กรุณากรอกชื่อของคุณ"
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 md:px-4 md:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base"
                   />
                 </div>
 
@@ -753,7 +756,7 @@ const Contact = () => {
                     value={formData.lineId}
                     onChange={handleChange}
                     placeholder="กรุณากรอก Line ID ของคุณ"
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 md:px-4 md:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base"
                   />
                 </div>
 
@@ -770,7 +773,7 @@ const Contact = () => {
                     required
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 md:px-4 md:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base"
                   >
                     <option value="" disabled>
                       เลือกประเภทงาน
@@ -796,30 +799,32 @@ const Contact = () => {
                   <textarea
                     id="details"
                     name="details"
-                    rows={4}
+                    rows={3}
                     value={formData.details}
                     onChange={handleChange}
                     placeholder="กรุณาระบุรายละเอียดเพิ่มเติมเกี่ยวกับโปรเจค"
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 md:px-4 md:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base resize-none"
                   ></textarea>
                 </div>
 
                 {/* แสดงสถานะการส่งข้อมูล */}
                 {submitStatus.type && (
                   <div
-                    className={`p-4 rounded-lg ${
+                    className={`p-3 md:p-4 rounded-lg ${
                       submitStatus.type === "success"
                         ? "bg-green-500/10 text-green-400 border border-green-500/30"
                         : "bg-red-500/10 text-red-400 border border-red-500/30"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 md:gap-3">
                       {submitStatus.type === "success" ? (
-                        <Check className="h-5 w-5" />
+                        <Check className="h-4 w-4 md:h-5 md:w-5" />
                       ) : (
-                        <AlertTriangle className="h-5 w-5" />
+                        <AlertTriangle className="h-4 w-4 md:h-5 md:w-5" />
                       )}
-                      <p>{submitStatus.message}</p>
+                      <p className="text-sm md:text-base">
+                        {submitStatus.message}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -828,18 +833,18 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-medium rounded-lg px-5 py-3 flex items-center justify-center gap-2 transition-all ${
+                    className={`w-full bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-medium rounded-lg px-4 py-3 md:px-5 md:py-3 flex items-center justify-center gap-2 transition-all text-sm md:text-base ${
                       isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                     }`}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
+                        <div className="animate-spin h-4 w-4 md:h-5 md:w-5 border-2 border-white border-t-transparent rounded-full"></div>
                         <span>กำลังส่ง...</span>
                       </>
                     ) : (
                       <>
-                        <Send className="h-5 w-5" />
+                        <Send className="h-4 w-4 md:h-5 md:w-5" />
                         <span>ส่งข้อความ</span>
                       </>
                     )}
@@ -847,20 +852,20 @@ const Contact = () => {
                 </div>
               </form>
 
-              {/* Social Media Links Section - Modern Floating Icons */}
-              <div className="mt-6 p-5 bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-xl border border-slate-700/50 backdrop-blur-sm">
-                <h4 className="text-white font-medium mb-5 flex items-center gap-2">
+              {/* Social Media Links Section - ปรับให้เหมาะกับมือถือ */}
+              <div className="mt-4 md:mt-6 p-4 md:p-5 bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-xl border border-slate-700/50 backdrop-blur-sm">
+                <h4 className="text-white font-medium mb-4 md:mb-5 flex items-center gap-2 text-sm md:text-base">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-blue-400"
+                    className="text-blue-400 md:w-4 md:h-4"
                   >
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                   </svg>
@@ -869,7 +874,7 @@ const Contact = () => {
                   </span>
                 </h4>
 
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
                   {/* LINE */}
                   <a
                     href="https://line.me/ti/p/~kao_no_limit"
@@ -878,15 +883,15 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="LINE"
                   >
-                    <div className="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-green-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-5 md:h-5"
                       >
                         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
                       </svg>
@@ -904,15 +909,15 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="Facebook"
                   >
-                    <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-5 md:h-5"
                       >
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
@@ -930,15 +935,15 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="Telegram"
                   >
-                    <div className="w-12 h-12 bg-sky-500 rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-sky-500 rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-5 md:h-5"
                       >
                         <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                       </svg>
@@ -956,15 +961,15 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="X (Twitter)"
                   >
-                    <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-black rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-4 md:h-4"
                       >
                         <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
                       </svg>
@@ -982,15 +987,15 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="TikTok"
                   >
-                    <div className="w-12 h-12 bg-pink-600 rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-pink-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-4 md:h-4"
                       >
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                       </svg>
@@ -1006,19 +1011,19 @@ const Contact = () => {
                     className="flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-2 group"
                     aria-label="Email"
                   >
-                    <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-500 rounded-xl md:rounded-2xl flex items-center justify-center mb-1 md:mb-2 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-110 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115"
+                        className="text-white relative z-10 transition-transform duration-300 group-hover:scale-115 md:w-4 md:h-4"
                       >
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>

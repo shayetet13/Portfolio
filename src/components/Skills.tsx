@@ -32,7 +32,7 @@ const Skills = () => {
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            มากกว่า 5
+            มากกว่า 7
             ปีของประสบการณ์ในการพัฒนาซอฟต์แวร์ที่มีคุณภาพและประสิทธิภาพสูง
           </p>
         </motion.div>

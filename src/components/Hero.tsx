@@ -22,12 +22,11 @@ const Hero = () => {
       if (index < currentSnippet.length) {
         setDisplayText(currentSnippet.slice(0, index + 1));
         index++;
-        timeout = setTimeout(typeText, 100);
+        timeout = setTimeout(typeText, 80); // <-- ความเร็วการพิมพ์ 80ms
       } else {
         timeout = setTimeout(() => {
           setCurrentCode((prev) => (prev + 1) % codeSnippets.length);
-          setDisplayText("");
-        }, 2000);
+        }, 2000); // <-- หน่วงเวลาก่อนเปลี่ยนข้อความ 2 วินาที
       }
     };
 
