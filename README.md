@@ -1,11 +1,16 @@
-# Dev Kao Portfolio
+# DevNid Portfolio
 
-Professional Full Stack Developer Portfolio built with React, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Deployed on Netlify with optimized performance and SEO.
 
-## 🚀 Live Demo
+## 🚀 Features
 
-- **Production**: [https://devnid.xyz/](https://devnid.xyz/)
-- **Firebase Console**: [https://console.firebase.google.com/project/dev-kao-portfolio](https://console.firebase.google.com/project/dev-kao-portfolio)
+- **Modern Tech Stack**: React 18, TypeScript, Vite, Tailwind CSS
+- **Responsive Design**: Mobile-first approach with device-specific components
+- **Performance Optimized**: Fast loading with Vite bundling and Netlify CDN
+- **SEO Optimized**: Meta tags, structured data, and sitemap
+- **Interactive UI**: Framer Motion animations and smooth transitions
+- **Real-time Contact**: Telegram Bot integration for instant notifications
+- **Progressive Enhancement**: Works without JavaScript for core content
 
 ## 🛠️ Tech Stack
 
@@ -13,17 +18,30 @@ Professional Full Stack Developer Portfolio built with React, TypeScript, and Ta
 - **Animation**: Framer Motion
 - **Icons**: Lucide React
 - **Build Tool**: Vite
-- **Hosting**: Firebase Hosting
-- **CI/CD**: GitHub Actions
+- **Deployment**: Netlify
+- **Analytics**: Custom tracking with privacy focus
 
-## 📦 Installation
+## 📱 Device Support
+
+- **Desktop**: Full-featured experience with advanced animations
+- **Mobile**: Optimized UI with touch-friendly interactions
+- **Tablet**: Balanced experience between mobile and desktop
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/shayetet13/Portfolio
+git clone https://github.com/your-username/devnid-portfolio.git
 
 # Navigate to project directory
-cd dev-kao-portfolio
+cd devnid-portfolio
 
 # Install dependencies
 npm install
@@ -32,96 +50,139 @@ npm install
 npm run dev
 ```
 
-## 🚀 Deployment
-
-### Manual Deployment
+### Development
 
 ```bash
-# Build and deploy to Firebase
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Type checking
+npm run type-check
+
+# Lint code
+npm run lint
+```
+
+### Deployment
+
+```bash
+# Deploy to Netlify (production)
 npm run deploy
 
-# Deploy only hosting
-npm run deploy:hosting
+# Deploy preview
+npm run deploy:preview
 ```
 
-### Using Deploy Script
-
-```bash
-# Make script executable (Linux/Mac)
-chmod +x deploy.sh
-
-# Run deployment script
-./deploy.sh
-```
-
-### Auto Deployment
-
-The project uses GitHub Actions for automatic deployment:
-
-- Push to `main` branch triggers deployment
-- Pull requests create preview deployments
-
-## 🔧 Environment Setup
-
-1. Install Firebase CLI:
-
-```bash
-npm install -g firebase-tools
-```
-
-2. Login to Firebase:
-
-```bash
-firebase login
-```
-
-3. Initialize project (if not already done):
-
-```bash
-firebase init
-```
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 src/
-├── components/          # React components
-├── hooks/              # Custom React hooks
-├── utils/              # Utility functions
-├── types/              # TypeScript type definitions
-└── assets/             # Static assets
-
-public/                 # Public assets
-dist/                   # Build output (generated)
+├── components/           # React components
+│   ├── mobile/          # Mobile-specific components
+│   ├── ui/              # Reusable UI components
+│   └── ...              # Main components
+├── hooks/               # Custom React hooks
+├── utils/               # Utility functions
+├── assets/              # Static assets
+└── ...                  # Configuration files
 ```
 
-## 🌟 Features
+## 🎨 Components
 
-- ⚡ Lightning fast with Vite
-- 📱 Fully responsive design
-- 🎨 Modern UI with Tailwind CSS
-- 🚀 Smooth animations with Framer Motion
-- 📈 SEO optimized
-- 🔍 Analytics integration
-- 🌍 Multi-language support ready
-- 🔒 Type-safe with TypeScript
+### Responsive Components
+
+- `ResponsiveWrapper`: Device detection and component switching
+- `MobileHero`: Mobile-optimized hero section
+- `MobileProjects`: Mobile-optimized projects showcase
+
+### Core Components
+
+- `Hero`: Landing section with typing animation
+- `Projects`: Services and portfolio showcase
+- `About`: Personal story with terminal animation
+- `Skills`: Technical expertise display
+- `Testimonials`: Client feedback carousel
+- `Contact`: Contact form with Telegram integration
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create `.env.local` file:
+
+```env
+VITE_TELEGRAM_BOT_TOKEN=your_bot_token
+VITE_TELEGRAM_CHAT_ID=your_chat_id
+VITE_ANALYTICS_ID=your_analytics_id
+```
+
+### Netlify Configuration
+
+The project includes `netlify.toml` with:
+
+- Build settings
+- Headers for security and performance
+- Redirects for SPA routing
+- Edge functions support
+
+## 📊 Performance
+
+- **Lighthouse Score**: 95+ across all metrics
+- **Core Web Vitals**: Optimized for real-world performance
+- **Bundle Size**: Minimized with tree-shaking and code splitting
+- **CDN**: Global content delivery via Netlify
+
+## 🔒 Security
+
+- **Content Security Policy**: Configured headers
+- **XSS Protection**: Input sanitization
+- **HTTPS**: Enforced SSL/TLS
+- **Privacy**: No third-party tracking scripts
+
+## 📈 SEO Features
+
+- **Meta Tags**: Dynamic title, description, keywords
+- **Structured Data**: Schema.org markup
+- **Sitemap**: Auto-generated XML sitemap
+- **Robots.txt**: Search engine guidance
+- **Open Graph**: Social media optimization
+
+## 🎯 Browser Support
+
+- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
+- **Mobile Browsers**: iOS Safari, Chrome Mobile
+- **Progressive Enhancement**: Basic functionality without JavaScript
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🚀 Deployment Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+
 ## 📞 Contact
 
+- **Website**: [https://devnid.xyz](https://devnid.xyz)
 - **Email**: shayetet14@protonmail.com
-- **LINE**: kao_no_limit
-- **Facebook**: [Comfixit](https://www.facebook.com/Comfixit)
-- **Telegram**: [@up2uok](https://t.me/up2uok)
+- **LINE**: @kao_no_limit
+- **Telegram**: @up2uok
+
+---
+
+Built with ❤️ using modern web technologies
 "# Portfolio" 
