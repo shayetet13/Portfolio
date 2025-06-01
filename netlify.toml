@@ -3,9 +3,12 @@
   command = "npm ci && npm run build"
   
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "18.18.0"
   NPM_FLAGS = "--legacy-peer-deps"
   GIT_LFS_ENABLED = "false"
+  # Enable idiomatic version files for Node.js
+  NODE_ENV = "production"
+  ENABLE_NODEJS_IDIOMATIC_VERSIONS = "true"
   
 # ป้องกันปัญหา Git Submodule
 [build.processing]

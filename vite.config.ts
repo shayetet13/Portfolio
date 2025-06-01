@@ -43,10 +43,19 @@ export default defineConfig(({ command, mode }) => {
     },
     define: {
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+      // Enable Node.js idiomatic versions
+      "process.env.NODE_ENV": JSON.stringify(
+        mode === "production" ? "production" : "development"
+      ),
     },
     esbuild: {
       target: "esnext",
       format: "esm",
+      // Enable idiomatic version handling
+      legalComments: "none",
+    },
+    optimizeDeps: {
+      include: ["react", "react-dom", "framer-motion", "lucide-react"],
     },
   };
 });
