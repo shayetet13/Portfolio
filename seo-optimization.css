@@ -1,0 +1,54 @@
+/* SEO และ Performance optimizations */
+
+/* ปรับปรุง Core Web Vitals */
+img {
+  max-width: 100%;
+  height: auto;
+  loading: lazy;
+}
+
+/* CTA buttons สำหรับ conversion */
+.cta-button {
+  background: #4285f4;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #3367d6;
+}
+
+/* Landing page optimization */
+.landing-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.landing-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.landing-section p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .landing-section h1 {
+    font-size: 2em;
+  }
+
+  .landing-section p {
+    font-size: 1.1em;
+  }
+}

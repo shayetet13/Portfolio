@@ -1,0 +1,25 @@
+{
+  "name": "Dev Portfolio - Full Stack Developer",
+  "short_name": "Dev Portfolio",
+  "description": "Portfolio website for a full stack developer specializing in modern web technologies",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1e293b",
+  "background_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "th",
+  "categories": ["portfolio", "developer", "technology"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSIjMWUyOTNiIi8+CjxwYXRoIGQ9Ik05NiA0OEw2NCA4MEw5NiAxMTJMMTI4IDgwTDk2IDQ4WiIgZmlsbD0iIzM4OTlmZiIvPgo8cGF0aCBkPSJNOTYgODBMNjQgMTEyTDk2IDE0NEwxMjggMTEyTDk2IDgwWiIgZmlsbD0iIzhmNTZmZiIvPgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSIjMWUyOTNiIi8+CjxwYXRoIGQ9Ik0yNTYgMTI4TDE3MCAyMTRMMjU2IDMwMEwzNDIgMjE0TDI1NiAxMjhaIiBmaWxsPSIjMzg5OWZmIi8+CjxwYXRoIGQ9Ik0yNTYgMjE0TDE3MCAzMDBMMjU2IDM4NkwzNDIgMzAwTDI1NiAyMTRaIiBmaWxsPSIjOGY1NmZmIi8+Cjwvc3ZnPgo=",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

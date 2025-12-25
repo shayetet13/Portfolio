@@ -1,0 +1,59 @@
+{
+  "name": "devnid-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "build:analyze": "tsc && vite build --mode analyze",
+    "build:production": "NODE_ENV=production tsc && vite build --mode production",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "preview": "vite preview",
+    "deploy": "npm run build:production",
+    "deploy:preview": "npm run build",
+    "clean": "rm -rf dist node_modules/.vite .eslintcache",
+    "type-check": "tsc --noEmit",
+    "analyze": "npx vite-bundle-analyzer dist/stats.html",
+    "lighthouse": "lhci autorun",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "generate:icons": "node scripts/generate-optimized-images.js",
+    "test:performance": "lighthouse --output=json --output=html --form-factor=mobile --throttling-method=simulate --chrome-flags='--headless' https://devnid.xyz/",
+    "precommit": "npm run lint:fix && npm run type-check"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.6",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.2",
+    "tailwind-merge": "^1.14.0",
+    "web-vitals": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.0",
+    "terser": "^5.24.0",
+    "typescript": "^5.0.2",
+    "vite": "^5.4.11",
+    "vite-bundle-analyzer": "^0.7.0"
+  }
+}
+
+
+

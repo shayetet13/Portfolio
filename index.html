@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: https://api.telegram.org; worker-src 'self' blob:;">
+
+  <!-- Critical Performance - Preconnect -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="dns-prefetch" href="https://api.telegram.org" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+
+  <!-- Critical CSS Inline -->
+  <style>
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: #0f172a;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden
+    }
+
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #1e293b;
+      border-top: 3px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    .hide {
+      display: none
+    }
+  </style>
+
+  <!-- SEO Meta Tags -->
+  <title>devnid.xyz - บล็อกสำหรับนักพัฒนาโดย Nid | React Next.js, Docker, UX/UI, การเขียนโปรแกรม</title>
+  <meta name="description" content="รวบรวมบทความ, บันทึก และโปรเจกต์ที่น่าสนใจเกี่ยวกับ Software Development, System Design, Cloud และเทคโนโลยีอื่นๆ จากประสบการณ์ของ Nid นักพัฒนาไทย" />
+  <meta name="author" content="Nid" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="google" content="notranslate" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://devnid.xyz/" />
+
+  <!-- Keywords Meta Tag -->
+  <meta name="keywords" content="software development, system design, docker, next.js, microservices, cloud, programming, thai developer, การเขียนโปรแกรม, พัฒนาเว็บไซต์, สร้างเว็บแอป, web application, โปรแกรมเมอร์ไทย, เรียนเขียนโปรแกรม, บทความโปรแกรมมิ่ง, สอนเขียนเว็บ, ระบบคลาวด์, ไมโครเซอร์วิส, นักพัฒนาซอฟต์แวร์, การออกแบบระบบ, เทคโนโลยีสารสนเทศ, โค้ดดิ้ง, การพัฒนาแอพพลิเคชั่น, เว็บเทคโนโลยี, ฟรอนต์เอนด์, แบ็คเอนด์, ฐานข้อมูล, API, เซิร์ฟเวอร์, DevOps, การเรียนรู้โปรแกรมมิ่ง, สร้างเว็บด้วย React, Node.js, JavaScript, เปิดตัวเว็บ, โฮสติ้งเว็บ, เว็บดีไซน์, UX/UI, การพัฒนาเว็บ, เครื่องมือพัฒนา, Git, GitHub, วิธีเขียนโค้ด, คู่มือโปรแกรมมิ่ง, เทคนิคการเขียนโปรแกรม, อัลกอริธึม, โครงสร้างข้อมูล, คอมพิวเตอร์ไซเอนส์, บล็อกเทคโนโลยี, บทความไอที, ความรู้โปรแกรมมิ่ง, สาระน่ารู้ไอที, เทคโนโลยีใหม่, นวัตกรรมซอฟต์แวร์, การพัฒนาโมไบล์แอป, การสร้างเว็บไซต์, ระบบฐานข้อมูล, การออกแบบ UI/UX, เซิร์ฟเวอร์และเครือข่าย, cybersecurity, artificial intelligence, machine learning, blockchain, automation, digital transformation, agile development, scrum methodology, clean code, software architecture, performance optimization, testing, quality assurance" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devnid.xyz/" />
+  <meta property="og:title" content="devnid.xyz - บล็อกสำหรับนักพัฒนา | Software Development Blog" />
+  <meta property="og:description" content="รับเขียนโปรแกรม WebApp WebSite รวบรวมบทความ, บันทึก และโปรเจกต์เกี่ยวกับ Software Development, System Design, Docker, Next.js และเทคโนโลยีอื่นๆ จากประสบการณ์ของนักพัฒนาไทย" />
+  <meta property="og:image" content="https://devnid.xyz/img/1dev.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="devnid.xyz - Software Development Blog by Nid" />
+  <meta property="og:site_name" content="devnid.xyz" />
+  <meta property="og:locale" content="th_TH" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://devnid.xyz/" />
+  <meta property="twitter:title" content="devnid.xyz - บล็อกสำหรับนักพัฒนา | Software Development" />
+  <meta property="twitter:description" content="บทความและโปรเจกต์เกี่ยวกับ Software Development, System Design, Docker, Next.js จากประสบการณ์ของนักพัฒนาไทย" />
+  <meta property="twitter:image" content="https://devnid.xyz/img/1dev.png" />
+  <meta property="twitter:creator" content="@Shayetet14" />
+  <meta property="twitter:site" content="@Shayetet14" />
+
+  <!-- Additional Meta Tags -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="msapplication-TileColor" content="#0f172a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'G-DVB5537B7W');
+  </script>
+
+  <!-- Structured Data - Website -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "devnid.xyz",
+    "alternateName": "DevNid Portfolio",
+    "url": "https://devnid.xyz/",
+    "description": "บล็อกสำหรับนักพัฒนาเกี่ยวกับ Software Development และเทคโนโลยี",
+    "inLanguage": ["th-TH", "en-US"],
+    "author": {
+      "@type": "Person",
+      "name": "Nid",
+      "jobTitle": "Software Developer",
+      "url": "https://devnid.xyz/about-me"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Nid"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://devnid.xyz/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured Data - Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nid",
+    "jobTitle": "Software Developer & Technical Writer",
+    "description": "นักพัฒนาซอฟต์แวร์ไทย เชี่ยวชาญด้าน System Design, Docker, Next.js และเทคโนโลยีสมัยใหม่",
+    "url": "https://devnid.xyz/",
+    "image": "https://devnid.xyz/img/profile.jpg",
+    "email": "shayetet14@protonmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Thailand",
+      "addressLocality": "Bangkok"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance Developer"
+    },
+    "knowsAbout": [
+      "Software Development",
+      "System Design",
+      "Docker",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Web Development",
+      "Cloud Computing"
+    ],
+    "sameAs": [
+      "https://github.com/shayetet13/Portfolio",
+    ]
+  }
+  </script>
+
+  <!-- Structured Data - Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://devnid.xyz/#organization",
+    "name": "DevNid",
+    "url": "https://devnid.xyz/",
+    "logo": "https://devnid.xyz/img/logo.png",
+    "description": "Professional Web Development Services in Thailand",
+    "founder": {
+      "@type": "Person",
+      "name": "Nid"
+    },
+    "foundingDate": "2025",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "TH",
+      "addressLocality": "Bangkok"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+66-XXX-XXX-XXXX",
+      "contactType": "Customer Service",
+      "email": "shayetet14@protonmail.com",
+      "availableLanguage": ["th", "en"]
+    },
+    "sameAs": [
+      "https://github.com/shayetet13/Portfolio",
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=G-DVB5537B7W" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <!-- Loading Screen -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Main App -->
+  <div id="root"></div>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function (registration) {
+            console.log('SW registered: ', registration);
+          })
+          .catch(function (registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+
+  <!-- Remove loading screen when app loads -->
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var loadingElement = document.getElementById('loading');
+        if (loadingElement) {
+          loadingElement.classList.add('hide');
+        }
+      }, 500);
+    });
+  </script>
+
+  <!-- Main Application Script -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

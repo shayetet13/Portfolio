@@ -1,0 +1,8 @@
+# wrangler.toml
+name = "telegram-proxy"
+main = "src/index.js"
+compatibility_date = "2025-12-24"
+
+[vars]
+SITE_URL = "https://devnid.xyz"
+ALLOWED_ORIGIN = "https://devnid.xyz"

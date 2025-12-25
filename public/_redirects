@@ -1,0 +1,16 @@
+/*    /index.html   200
+
+# SEO-friendly redirects
+/portfolio              /
+/services               /#expertise
+/projects               /#featured-projects
+/about-us               /#about
+/contact-us             /#contact
+/web-development        /
+/full-stack-developer   /
+/react-developer        /
+/nodejs-developer       /
+
+# Old URLs redirect
+/old-portfolio          /    301
+/home                   /    301

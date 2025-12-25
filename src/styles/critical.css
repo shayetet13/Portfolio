@@ -1,0 +1,444 @@
+/* Critical CSS for above-the-fold content - Optimized for minimal main thread work */
+
+/* Use CSS containment to isolate layout work */
+.critical-section {
+  padding: 4rem 0;
+  border-top: 1px solid rgb(30 41 59);
+  position: relative;
+  overflow: hidden;
+  /* Performance optimizations */
+  contain: layout style paint;
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+.critical-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+  /* Reduce layout recalculation */
+  contain: layout;
+}
+
+.critical-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  /* Optimize text rendering */
+  font-display: swap;
+  text-rendering: optimizeSpeed;
+  contain: style;
+}
+
+.critical-button {
+  width: 100%;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: transform 200ms ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  /* Performance optimizations */
+  will-change: transform;
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+/* Critical card styles - optimized for minimal repaints */
+.critical-card {
+  position: relative;
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: border-color 300ms ease-out;
+  /* Performance optimizations */
+  contain: layout style paint;
+  will-change: border-color;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.critical-card:hover {
+  border-color: rgba(100, 116, 139, 0.7);
+}
+
+/* Critical grid layout - use subgrid when supported */
+.critical-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Performance optimization */
+  contain: layout;
+}
+
+/* Critical stats grid */
+.critical-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  /* Performance optimization */
+  contain: layout;
+}
+
+/* Critical stat card */
+.critical-stat-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: background-color 200ms ease-out;
+  /* Performance optimizations */
+  contain: layout style;
+  will-change: background-color;
+}
+
+.critical-stat-card:hover {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+/* Critical icon container */
+.critical-icon {
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Performance optimization */
+  contain: strict;
+  transform: translateZ(0);
+}
+
+/* Critical service icon */
+.critical-service-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 200ms ease-out;
+  /* Performance optimizations */
+  contain: strict;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.critical-service-icon:hover {
+  transform: translateZ(0) scale(1.05);
+}
+
+/* Critical text styles */
+.critical-text-white {
+  color: white;
+}
+
+.critical-text-slate-400 {
+  color: rgb(148, 163, 184);
+}
+
+.critical-text-slate-300 {
+  color: rgb(203, 213, 225);
+}
+
+.critical-text-slate-500 {
+  color: rgb(100, 116, 139);
+}
+
+/* Critical gradient text */
+.critical-gradient-text {
+  background: linear-gradient(
+    to right,
+    rgb(96, 165, 250),
+    rgb(168, 85, 247),
+    rgb(34, 211, 238)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Optimize background-clip performance */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Critical background gradients */
+.critical-bg-blue {
+  background: linear-gradient(to right, rgb(37, 99, 235), rgb(6, 182, 212));
+}
+
+.critical-bg-purple {
+  background: linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153));
+}
+
+.critical-bg-green {
+  background: linear-gradient(to right, rgb(22, 163, 74), rgb(5, 150, 105));
+}
+
+.critical-bg-orange {
+  background: linear-gradient(to right, rgb(234, 88, 12), rgb(239, 68, 68));
+}
+
+/* Critical utility classes for performance */
+.critical-gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.critical-no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.critical-smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Critical loading state */
+.critical-loading {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.critical-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Critical image optimization */
+.critical-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  /* Prevent layout shift */
+  aspect-ratio: 2 / 1;
+  background-color: rgba(15, 23, 42, 0.5);
+  /* Performance optimization */
+  contain: layout;
+  will-change: transform;
+}
+
+.critical-image-container {
+  width: 100%;
+  max-width: 288px;
+  height: 144px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Prevent layout shift */
+  contain: layout size;
+}
+
+/* Loading placeholder for images */
+.critical-image-placeholder {
+  width: 288px;
+  height: 144px;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.5) 25%,
+    rgba(30, 41, 59, 0.5) 50%,
+    rgba(15, 23, 42, 0.5) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(148, 163, 184, 0.7);
+  font-size: 0.875rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* MERN Stack specific styles */
+.critical-mern-image {
+  width: 288px;
+  height: 144px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  background-color: rgba(15, 23, 42, 0.8);
+  /* Prevent layout shift */
+  contain: layout size;
+}
+
+.critical-mern-fallback {
+  width: 288px;
+  height: 144px;
+  min-height: 144px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.2) 0%,
+    rgba(59, 130, 246, 0.2) 100%
+  );
+  border-radius: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  /* Prevent layout shift */
+  contain: layout size;
+}
+
+/* Optimized image loading with cache-friendly animations */
+.critical-image-optimized {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.5) 25%,
+    rgba(30, 41, 59, 0.5) 50%,
+    rgba(15, 23, 42, 0.5) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.critical-image-optimized.loaded {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+  background: none;
+}
+
+/* Progressive enhancement for cached images */
+.critical-image-cached {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+  background: none;
+}
+
+/* Minimize initial CSS bundle - Media queries at bottom */
+@media (min-width: 768px) {
+  .critical-section {
+    padding: 5rem 0;
+  }
+
+  .critical-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .critical-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Critical keyframes - minimal animations */
+@keyframes criticalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.critical-animate-in {
+  animation: criticalFadeIn 400ms ease-out forwards;
+}
+
+/* Performance hint for browsers */
+@supports (contain: strict) {
+  .critical-card,
+  .critical-stat-card {
+    contain: strict;
+  }
+}
+
+/* Reduce specificity and use efficient selectors */
+.critical-flex {
+  display: flex;
+}
+
+.critical-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.critical-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.critical-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.critical-items-center {
+  align-items: center;
+}
+
+.critical-gap-2 {
+  gap: 0.5rem;
+}
+
+.critical-gap-4 {
+  gap: 1rem;
+}
+
+.critical-gap-6 {
+  gap: 1.5rem;
+}
+
+/* Critical responsive utilities */
+.critical-hidden-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .critical-hidden-mobile {
+    display: block;
+  }
+}
+
+/* Browser-specific optimizations */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+  .critical-card {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Optimize for different pixel densities */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .critical-icon,
+  .critical-service-icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
